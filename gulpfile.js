@@ -9,7 +9,9 @@ var uglify = require('gulp-uglify'),
     del = require('del'),
     browserSync = require('browser-sync'),
     ngAnnotate = require('gulp-ng-annotate'),
-    lib = require('bower-files')();
+    lib = require('bower-files')(),
+    less = require('gulp-less'),
+    path = require('path');
 
 var distFolder = 'public/';
 
@@ -48,11 +50,23 @@ gulp.task('api-css-minify', function () {
         .pipe(gulp.dest(distFolder + '/vendor/css'));
 });
 
-gulp.task('app-css-minify', function () {
+gulp.task('app-css-minify', ['app-less-css'], function () {
     gulp.src('src/css/**/*')
         .pipe(cssMinify())
         .pipe(concat('app.min.css'))
         .pipe(gulp.dest(distFolder + '/css'));
+});
+
+gulp.task('remove-less-compiled', function() {
+    del('src/css/app.css');
+});
+
+gulp.task('app-less-css', ['remove-less-compiled'], function () {
+    return gulp.src('./src/less/app.less')
+        .pipe(less({
+            paths: [ path.join(__dirname, 'less', 'includes') ]
+        }))
+        .pipe(gulp.dest('./src/css'));
 });
 
 gulp.task('api-font-copy', function () {
@@ -93,7 +107,6 @@ gulp.task('clean', function () {
 });
 
 gulp.task('build', [
-        //'clean',
         'api-concat-uglify',
         'api-css-minify',
         'api-font-copy',
