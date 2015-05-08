@@ -4,14 +4,9 @@
 var uglify = require('gulp-uglify'),
     cssMinify = require('gulp-minify-css'),
     sourcemaps = require('gulp-sourcemaps'),
-    imagemin = require('gulp-imagemin'),
-    pngquant = require('imagemin-pngquant'),
     concat = require('gulp-concat'),
     gulp = require('gulp'),
-    combiner = require('stream-combiner2'),
     del = require('del'),
-    livereload = require('gulp-livereload'),
-    nodemon = require('gulp-nodemon'),
     browserSync = require('browser-sync'),
     ngAnnotate = require('gulp-ng-annotate'),
     lib = require('bower-files')();
@@ -19,25 +14,96 @@ var uglify = require('gulp-uglify'),
 var distFolder = 'public/';
 
 gulp.task('api-concat-uglify', function () {
-    gulp.src(lib.ext('js').files)
+    gulp.src(lib.self()
+        .dev()
+        .ext('js')
+        .match('!**/*.min.js')
+        .join({js: ['js', 'jsx']})
+        .files)
         .pipe(sourcemaps.init())
-            .pipe(concat('lib.min.js'))
-            .pipe(uglify())
+        .pipe(concat('lib.min.js'))
+        .pipe(uglify())
         .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest(distFolder + '/vendor/js'));
 });
 
-gulp.task('css-minify', function() {
-    gulp.src(lib.ext('css').files)
+gulp.task('app-js-uglify', function () {
+    gulp.src('src/js/**/*.js')
+        .pipe(sourcemaps.init())
+        .pipe(ngAnnotate())
+        .pipe(concat('app.min.js'))
+        .pipe(uglify())
+        .pipe(sourcemaps.write('.'))
+        .pipe(gulp.dest(distFolder + '/js'));
+});
+
+gulp.task('api-css-minify', function () {
+    gulp.src(lib.self()
+        .dev()
+        .ext('css')
+        .match('!**/*.min.css')
+        .files)
         .pipe(cssMinify())
         .pipe(concat('lib.min.css'))
         .pipe(gulp.dest(distFolder + '/vendor/css'));
 });
 
-gulp.task('font-copy', function() {
+gulp.task('app-css-minify', function () {
+    gulp.src('src/css/**/*')
+        .pipe(cssMinify())
+        .pipe(concat('app.min.css'))
+        .pipe(gulp.dest(distFolder + '/css'));
+});
+
+gulp.task('api-font-copy', function () {
     gulp.src(lib.ext(['eot', 'woff', 'woff2', 'ttf', 'svg']).files)
         .pipe(gulp.dest(distFolder + '/vendor/fonts'));
 });
 
-gulp.task('default', ['api-concat-uglify', 'css-minify', 'font-copy'],
-    function() {});
+gulp.task('app-copy-html', function () {
+    gulp.src('src/html/**/*.html')
+        .pipe(gulp.dest(distFolder + '/'));
+});
+
+gulp.task('browser-sync', function () {
+    browserSync({
+        //        server: {
+        //            baseDir: "./"
+        //        }
+        proxy: 'http://localhost:3000',
+        files: ['public/**']
+    });
+});
+
+gulp.task('watch', function () {
+    // Create LiveReload server
+    //livereload.listen();
+    //gulp.start('start');
+    gulp.start('browser-sync');
+    // Watch any files in src/, reload on change
+    gulp.watch('src/**/*', [
+        'app-css-minify',
+        'app-js-uglify',
+        'app-copy-html'
+    ]);
+});
+
+gulp.task('clean', function () {
+    del(distFolder);
+});
+
+gulp.task('build', [
+        //'clean',
+        'api-concat-uglify',
+        'api-css-minify',
+        'api-font-copy',
+        'app-css-minify',
+        'app-js-uglify',
+        'app-copy-html'
+    ],
+    function () {
+    });
+
+gulp.task('default', ['build'],
+    function () {
+    });
