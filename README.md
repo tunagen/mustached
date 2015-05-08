@@ -1,2 +1,2 @@
 # mustached
-Test on editor
+Test on HTML editor
