@@ -74,6 +74,11 @@ gulp.task('api-font-copy', function () {
         .pipe(gulp.dest(distFolder + '/vendor/fonts'));
 });
 
+gulp.task('app-copy-font', function() {
+    gulp.src('src/fonts/*.woff')
+        .pipe(gulp.dest(distFolder + '/fonts'));
+});
+
 gulp.task('app-copy-html', function () {
     gulp.src('src/html/**/*.html')
         .pipe(gulp.dest(distFolder + '/'));
@@ -96,6 +101,7 @@ gulp.task('watch', function () {
     gulp.start('browser-sync');
     // Watch any files in src/, reload on change
     gulp.watch('src/**/*', [
+        'app-copy-font',
         'app-css-minify',
         'app-js-uglify',
         'app-copy-html'
@@ -110,6 +116,7 @@ gulp.task('build', [
         'api-concat-uglify',
         'api-css-minify',
         'api-font-copy',
+        'app-copy-font',
         'app-css-minify',
         'app-js-uglify',
         'app-copy-html'

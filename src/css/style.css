@@ -1,3 +1,25 @@
 a {
   color: #00B7FF;
 }
+
+/* Logo tunaGen */
+@font-face {
+  font-family: 'FontTunaGen';
+  src: url('../fonts/tunagen1.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+.tg {
+  display: inline-block;
+  font: normal normal normal 14px/1 FontTunaGen;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transform: translate(0, 0);
+}
+
+.tg-logo:before {
+  content:'@';
+  font-size:120%;
+}
