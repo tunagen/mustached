@@ -29,6 +29,11 @@ gulp.task('api-concat-uglify', function () {
         .pipe(gulp.dest(distFolder + '/vendor/js'));
 });
 
+gulp.task('app-copy-images', function() {
+    gulp.src('bower_components/angular-tree-control/images/**/*')
+        .pipe(gulp.dest(distFolder+'/vendor/images'));
+});
+
 gulp.task('app-js-uglify', function () {
     gulp.src('src/js/**/*.js')
         .pipe(sourcemaps.init())
@@ -113,6 +118,7 @@ gulp.task('clean', function () {
 });
 
 gulp.task('build', [
+        'app-copy-images',
         'api-concat-uglify',
         'api-css-minify',
         'api-font-copy',

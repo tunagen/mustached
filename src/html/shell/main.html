@@ -4,6 +4,13 @@
         <div class="app-aside-content">
             <div>Project</div>
             <div>My project</div>
+            <treecontrol  class="tree-classic"
+                 tree-model="dataForTheTree"
+                 options="treeOptions"
+                 on-selection="showSelected(node)"
+                 selected-node="node1">
+                {{node.name}}
+            </treecontrol>
         </div>
     </div>
     <div class="app-content">

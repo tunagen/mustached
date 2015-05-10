@@ -1,6 +1,6 @@
 'use strict';
 
-var mustache = angular.module('mustache',['ui.router']);
+var mustache = angular.module('mustache',['ui.router','treeControl']);
 
 mustache.run(['$rootScope', '$state', '$stateParams',
     function($rootScope, $state, $stateParams) {
