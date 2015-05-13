@@ -11,7 +11,8 @@ var uglify = require('gulp-uglify'),
     ngAnnotate = require('gulp-ng-annotate'),
     lib = require('bower-files')(),
     less = require('gulp-less'),
-    path = require('path');
+    path = require('path'),
+    runSequence = require('run-sequence');
 
 var distFolder = 'public/';
 
@@ -66,12 +67,16 @@ gulp.task('remove-less-compiled', function() {
     del('src/css/app.css');
 });
 
-gulp.task('app-less-css', ['remove-less-compiled'], function () {
+gulp.task('app-less-css-asynch', ['remove-less-compiled'], function () {
     return gulp.src('./src/less/app.less')
         .pipe(less({
             paths: [ path.join(__dirname, 'less', 'includes') ]
         }))
         .pipe(gulp.dest('./src/css'));
+});
+
+gulp.task('app-less-css', function () {
+    runSequence(['remove-less-compiled', 'app-less-css-asynch']);
 });
 
 gulp.task('api-font-copy', function () {

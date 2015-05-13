@@ -23,12 +23,3 @@ a {
   content:'@';
   font-size:120%;
 }
-
-.a1,  .a3, .a5, .a7, .a2, .a4, .a6 {
-  color:#cfcfcf !important;
-}
-
- .a8 {
-  background-color: #001100 !important;
-   font-weight: normal !important;
-}

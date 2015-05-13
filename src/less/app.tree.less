@@ -1,0 +1,94 @@
+.foldernav {
+  /* prevent user selection */
+  -moz-user-select: -moz-none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+  /* default */
+  font-family: Verdana, Helvetica, Arial, sans-serif;
+  font-size:13px;
+  color: #555;
+  text-decoration: none;
+}
+
+.foldernav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border: none;
+  overflow: hidden;
+}
+
+.foldernav li {
+  position: relative;
+  padding: 0 0 0 20px;
+  line-height: 20px;
+}
+
+.foldernav li.tree-expanded i.tree-leaf-head, .foldernav li.tree-collapsed i.tree-leaf-head {display:none;}
+.foldernav li.tree-expanded i.tree-branch-head, .foldernav li.tree-collapsed i.tree-branch-head {display:inline;}
+.foldernav li.tree-leaf i.tree-branch-head {display:none;}
+.foldernav li.tree-leaf i.tree-leaf-head {display:inline;}
+
+.foldernav li i.tree-branch-head {
+  cursor: pointer;
+}
+
+.foldernav li .tree-label {
+  cursor: pointer;
+  display: inline;
+}
+
+/*
+ * Expanded.
+ */
+.foldernav li.tree-expanded i.tree-branch-head {
+  padding: 1px 10px;
+  &:before {
+    content: '\f07c';
+    font-family: 'FontAwesome';
+    font-style: normal;
+  }
+}
+
+/*
+ * Collapsed.
+ */
+.foldernav li.tree-collapsed i.tree-branch-head {
+  padding: 1px 10px;
+  &:before {
+    content: '\f07b';
+    font-family: 'FontAwesome';
+    font-style: normal;
+  }
+}
+
+/*
+ * Leaf
+ */
+.foldernav li.tree-leaf i.tree-leaf-head {
+  padding: 1px 10px;
+  &:before{
+    content: '\f0f6';
+    font-family: 'FontAwesome';
+    font-style: normal;
+  }
+}
+
+.foldernav li .tree-selected  i.tree-leaf-head {
+  background-color: #aaddff;
+  color: #31b0d5;
+  font-weight: bold;
+}
+
+.a1,  .a3, .a5, .a7, .a2, .a4, .a6 {
+  color:@text-color;
+}
+
+.a8 {
+  color: white;
+  background-color: black;
+  font-weight: bold;
+}

@@ -9,6 +9,10 @@ angular.module('mustache').controller('mainCtrl', function ($scope) {
         asideBg: 'bg-black'
     };
 
+    $scope.file = {
+        selected: {}
+    };
+
     $scope.treeOptions = {
         nodeChildren: "children",
         dirSelectable: true,
@@ -22,7 +26,7 @@ angular.module('mustache').controller('mainCtrl', function ($scope) {
             label: "a6",
             labelSelected: "a8"
         }
-    }
+    };
     $scope.dataForTheTree =
         [
             {
@@ -56,4 +60,8 @@ angular.module('mustache').controller('mainCtrl', function ($scope) {
             ]
             }
         ];
+    $scope.showSelected = function(e) {
+        console.log('> showSelected: ' + JSON.stringify(e));
+        $scope.file.selected = e;
+    }
 });

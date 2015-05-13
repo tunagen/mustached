@@ -2,20 +2,39 @@
     <div ng-include="'/shell/blocks/header.html'"></div>
     <div class="app-aside {{app.asideBg}}">
         <div class="app-aside-content">
-            <div>Project</div>
+            <nav ui-nav class="navi">
+            <ul class="nav">
+                <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
+                    <span translate="aside.nav.HEADER">Project</span>
+                </li>
+                <li>
+                    <a href class="auto">
+                      <span class="pull-right text-muted">
+                        <i class="fa fa-fw fa-angle-right text"></i>
+                        <i class="fa fa-fw fa-angle-down text-active"></i>
+                      </span>
+                        <i class="glyphicon glyphicon-stats icon text-primary-dker"></i>
+                        <span class="font-bold" translate="aside.nav.DASHBOARD">My project</span>
+                    </a>
+                    <div treecontrol  class="foldernav"
+                                  tree-model="dataForTheTree"
+                                  options="treeOptions"
+                                  on-selection="showSelected(node)"
+                                  selected-node="node1">
+                        {{node.name}}
+                    </div>
+                </li>
+
+            </ul>
+            </nav>
             <div>My project</div>
-            <treecontrol  class="tree-classic"
-                 tree-model="dataForTheTree"
-                 options="treeOptions"
-                 on-selection="showSelected(node)"
-                 selected-node="node1">
-                {{node.name}}
-            </treecontrol>
+
         </div>
     </div>
     <div class="app-content">
         generation
         <h1>tunaGen.Mustache</h1>
         <h2>App version {{app.version}}</h2>
+        <h3>File selected: {{file.selected.name}}</h3>
     </div>
 </div>
