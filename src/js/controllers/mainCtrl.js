@@ -15,7 +15,7 @@ angular.module('mustache').controller('mainCtrl', function ($scope) {
 
     $scope.treeOptions = {
         nodeChildren: "children",
-        dirSelectable: true,
+        dirSelectable: false,
         injectClasses: {
             ul: "a1",
             li: "a2",
@@ -61,7 +61,31 @@ angular.module('mustache').controller('mainCtrl', function ($scope) {
             }
         ];
     $scope.showSelected = function(e) {
-        console.log('> showSelected: ' + JSON.stringify(e));
         $scope.file.selected = e;
     }
+
+    $scope.nodeToggled = function(e) {
+       // console.log('> nodeToggled: ' + JSON.stringify(e));
+    }
+
+    var setParent = function(o){
+
+        if(angular.isDefined(o.children)) {
+            var slash = '';
+            if(angular.isUndefined(o.parent)) {
+                o.parent = '';
+            } else {
+                slash = '/';
+            }
+            for (var n = 0; n < o.children.length; n++) {
+                if(angular.isUndefined(o.children[n].parent)) {
+                    o.children[n].parent = '';
+                }
+                o.children[n].parent = o.parent + slash + o.name;
+                setParent(o.children[n]);
+            }
+        }
+    }
+
+    setParent($scope.dataForTheTree[0]);
 });

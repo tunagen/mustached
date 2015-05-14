@@ -20,6 +20,7 @@
                                   tree-model="dataForTheTree"
                                   options="treeOptions"
                                   on-selection="showSelected(node)"
+                                  on-node-toggle="nodeToggled(node)"
                                   selected-node="node1">
                         {{node.name}}
                     </div>
@@ -35,6 +36,6 @@
         generation
         <h1>tunaGen.Mustache</h1>
         <h2>App version {{app.version}}</h2>
-        <h3>File selected: {{file.selected.name}}</h3>
+        <h3>File selected: {{file.selected.parent}}/{{file.selected.name}}</h3>
     </div>
 </div>
