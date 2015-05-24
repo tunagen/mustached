@@ -5,31 +5,34 @@
             <nav ui-nav class="navi">
             <ul class="nav">
                 <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
-                    <span translate="aside.nav.HEADER">Project</span>
+                    <span>Project</span>
                 </li>
                 <li>
                     <a href class="auto">
-                      <span class="pull-right text-muted">
-                        <i class="fa fa-fw fa-angle-right text"></i>
-                        <i class="fa fa-fw fa-angle-down text-active"></i>
-                      </span>
+                            <span class="pull-right text-muted">
+                                <i class="fa fa-fw fa-angle-right text"></i>
+                                <i class="fa fa-fw fa-angle-down text-active"></i>
+                            </span>
                         <i class="glyphicon glyphicon-stats icon text-primary-dker"></i>
-                        <span class="font-bold" translate="aside.nav.DASHBOARD">My project</span>
+                        <span class="font-bold">Dashboard</span>
                     </a>
-                    <div treecontrol  class="foldernav"
-                                  tree-model="dataForTheTree"
-                                  options="treeOptions"
-                                  on-selection="showSelected(node)"
-                                  on-node-toggle="nodeToggled(node)"
-                                  selected-node="node1">
-                        {{node.name}}
-                    </div>
                 </li>
-
+                <li>
+                    <ul class="nav nav-sub dk">
+                        <li class="nav-sub-header">
+                            <div treecontrol  class="foldernav"
+                                 tree-model="dataForTheTree"
+                                 options="treeOptions"
+                                 on-selection="showSelected(node)"
+                                 on-node-toggle="nodeToggled(node)"
+                                 selected-node="node1">
+                                {{node.name}}
+                            </div>
+                        </li>
+                    </ul>
+                </li>
             </ul>
             </nav>
-            <div>My project</div>
-
         </div>
     </div>
     <div class="app-content">

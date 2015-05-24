@@ -3,6 +3,7 @@
  */
 'use strict';
 
+/* @ngInject */
 angular.module('mustache').controller('mainCtrl', function ($scope) {
     $scope.app = {
         version: '0.0.5',
@@ -68,8 +69,8 @@ angular.module('mustache').controller('mainCtrl', function ($scope) {
        // console.log('> nodeToggled: ' + JSON.stringify(e));
     }
 
+    // Compute parent path
     var setParent = function(o){
-
         if(angular.isDefined(o.children)) {
             var slash = '';
             if(angular.isUndefined(o.parent)) {

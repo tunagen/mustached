@@ -10,6 +10,11 @@ angular.module('mustache').config(['$stateProvider', '$urlRouterProvider',
             url: '/',
             controller: 'mainCtrl',
             templateUrl: '/shell/main.html'
-        });
+        })
+            .state('layout', {
+                url: '/layout',
+                controller: 'layoutCtrl',
+                templateUrl: '/layout/layout.html'
+            });
     }]);
 

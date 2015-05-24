@@ -64,11 +64,19 @@ gulp.task('app-css-minify', ['app-less-css'], function () {
 });
 
 gulp.task('remove-less-compiled', function() {
-    del('src/css/app.css');
+    //del('src/css/app.css');
 });
 
-gulp.task('app-less-css-asynch', ['remove-less-compiled'], function () {
+gulp.task('app-less-css-asynch', ['app-less-css-asynch-m'], function () {
     return gulp.src('./src/less/app.less')
+        .pipe(less({
+            paths: [ path.join(__dirname, 'less', 'includes') ]
+        }))
+        .pipe(gulp.dest('./src/css'));
+});
+
+gulp.task('app-less-css-asynch-m', ['remove-less-compiled'], function () {
+    return gulp.src('./src/less/mustache.less')
         .pipe(less({
             paths: [ path.join(__dirname, 'less', 'includes') ]
         }))
