@@ -1,15 +1,19 @@
 <div id="layout" class="mustache">
+    <div class="dock dock-top">Top top</div>
     <div id="floatLeft" class="dock dock-left">
         <nav class="mustache-nav" ui-nav>
             <ul>
-                <li class="sub-header"><a href="#">Some header</a></li>
-                <li class="sub-header"><a href="#">Could this be a good header</a>
+                <li class="text-muted text-xs">
+                    <span>Navigation</span>
+                </li>
+                <li class="sub-header"><a><i class="fa fa-cloud"></i>Some header</a></li>
+                <li class="sub-header"><a><i class="fa fa-bullseye"></i>Could this be a good header</a>
                     <ul>
-                        <li><a href="#">Some sub menu</a></li>
+                        <li><a href="#"><i class="fa fa-bar-chart"></i>Some sub menu</a></li>
                         <li><a href="#">Yest another one</a></li>
                     </ul>
                 </li>
-                <li class="sub-header"><a href="#" class="active">Yest another header</a>
+                <li class="sub-header"><a class="active"><i class="fa fa-anchor"></i>Yet another header</a>
                     <ul>
                         <li><a href="#">Some sub menu</a></li>
                         <li><a href="#">Yest another one</a></li>
@@ -24,5 +28,11 @@
     <!--<div id="floatRightBlue" class="dock dock-right">-->
         <!--<span class="blue">This is blue</span>-->
     <!--</div>-->
-    <div id="anotherBlue" class="dock dock-center">Is that blue?</div>
+    <div id="anotherBlue" class="dock dock-center">
+        <div class="col-md-3">Is that blue? Haha no it's white.</div>
+        <div class="col-md-3">Is that blue? Haha no it's white.</div>
+        <div class="col-md-3">Is that blue? Haha no it's white.</div>
+        <div class="col-md-3">Is that blue? Haha no it's white.</div>
+        <div class="col-md-3">Is that blue? Haha no it's white.</div>
+    </div>
 </div>

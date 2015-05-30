@@ -1,3 +1,5 @@
+@import "lesshat/lesshat.less";
+
 .mustache {
   height: auto;
   min-height: 100%;
@@ -5,29 +7,31 @@
 
 .dock {
   display:block;
-  border-style: solid;
-  border-left: solid black 1px;
-  border-right:solid black 1px;
-  border-top: solid black 1px;
-  border-bottom: solid black 1px;
   height: 100%;
 }
 
+.dock-top {
+  height: 65px;
+  .box-shadow(0 1px 3px rgba(20,20,20,0.5));
+}
+
 .dock-center {
-  position:absolute;
+  position: absolute;
   left: 305px;
-  top:65px;
+  width: auto;
 }
 
 .dock-left {
   position: absolute;
-  top: 65px;
   left:0;
   right:auto;
   width: 300px;
+  .box-shadow(0 1px 3px rgba(20,20,20,0.5));
 }
 .dock-right {
   position: absolute;
   right:0;
   left: auto;
+  background-color: #004444;
+  z-index: 1;
 }

@@ -1,25 +1,86 @@
 @import "lesshat/lesshat.less";
+@import "mustache.variable.less";
 
 /* testing less hat */
 .mustache-nav {
   background-color: @nav-bg;
   height: 100%;
   overflow: hidden;
+  font-size: @font-md-size;
+  font-weight: @font-weight;
+  -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
   ul {
     margin-left:-30px;
+    list-style-type:none;
+  }
+  li {
+    margin-left: -10px;
+  }
+  li > ul > li {
+    margin-left: -10px;
   }
   a {
+    display:block;
     text-decoration: none;
     color:@nav-fg-link;
+    cursor: pointer;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    &:before {
+      content:' ';
+      padding-left: 10px;
+    }
   }
+
+  .sub-header {
+    margin-top: 0px;
+  }
+
+  a > i {
+    padding-right: 10px;
+  }
+
+  .sub-header > a {
+    &:after {
+      content:'\f105';
+      font-family: 'FontAwesome';
+      text-align: right;
+      float:right;
+      margin-right: 10px;
+    }
+  }
+
+  .sub-header > a.active {
+    &:after {
+      content:'\f107';
+      font-family: 'FontAwesome';
+      text-align: right;
+      float:right;
+      margin-right: 10px;
+    }
+  }
+
   a:active,
   a:hover {
     color:@nav-ov-link;
+    background-color: #003300;
   }
-  .sub-header ul {
+
+  a.active {
+    background-color:@nav-bg-active;
+  }
+
+  .sub-header ul,
+  {
     display:none;
+    background-color:@nav-bg-active;
   }
   .transition(all .2s ease-in-out 0s);
+
+  .active {
+    color:@nav-ac-link;
+  }
 
   .active + ul {
     opacity: 1;
