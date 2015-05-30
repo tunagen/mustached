@@ -15,6 +15,11 @@ angular.module('mustache').config(['$stateProvider', '$urlRouterProvider',
                 url: '/layout',
                 controller: 'layoutCtrl',
                 templateUrl: '/layout/layout.html'
+            })
+            .state('layout.explorer', {
+                url: '/explorer',
+                controller: 'explorerCtrl',
+                templateUrl: '/explorer/explorer.html'
             });
     }]);
 

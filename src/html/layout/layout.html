@@ -1,22 +1,46 @@
 <div id="layout" class="mustache">
-    <div class="dock dock-top">Top top</div>
+    <div class="dock dock-top">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-nav-main-menu" aria-expanded="false" aria-controls="bs-nav-main-menu">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <!-- tunaGen Mustache -->
+            <a href="#" class="navbar-brand">
+                <i class="tg tg-logo"></i>
+                TG<sup>M</sup>
+            </a>
+        </div>
+    </div>
     <div id="floatLeft" class="dock dock-left">
         <nav class="mustache-nav" ui-nav>
             <ul>
-                <li class="text-muted text-xs">
+                <li class="info-header">
                     <span>Navigation</span>
                 </li>
-                <li class="sub-header"><a><i class="fa fa-cloud"></i>Some header</a></li>
-                <li class="sub-header"><a><i class="fa fa-bullseye"></i>Could this be a good header</a>
+                <li class="sub-header"><a ui-sref-active="active" ui-sref="layout.explorer"><i class="fa fa-cloud"></i>Project explorer</a></li>
+                <li class="sub-header"><a ui-sref-active="active"><i class="fa fa-bullseye"></i>Could this be a good header</a>
                     <ul>
                         <li><a href="#"><i class="fa fa-bar-chart"></i>Some sub menu</a></li>
                         <li><a href="#">Yest another one</a></li>
                     </ul>
                 </li>
-                <li class="sub-header"><a class="active"><i class="fa fa-anchor"></i>Yet another header</a>
+                <li class="sub-header"><a ui-sref-active="active"><i class="fa fa-anchor"></i>Yet another header</a>
                     <ul>
                         <li><a href="#">Some sub menu</a></li>
                         <li><a href="#">Yest another one</a></li>
+                    </ul>
+                </li>
+                <li class="info-header">
+                    <span>Utility</span>
+                </li>
+                <li class="sub-header"><a ui-sref-active="active"><i class="fa fa-list-alt"></i>Generation</a>
+                    <ul>
+                        <li><a href="#"><i class="fa fa-html5"></i>HTML</a></li>
+                        <li><a href="#">REST API</a></li>
                     </ul>
                 </li>
             </ul>
@@ -25,14 +49,7 @@
     <div id="floatRight" class="dock dock-right">
         This is right
     </div>
-    <!--<div id="floatRightBlue" class="dock dock-right">-->
-        <!--<span class="blue">This is blue</span>-->
-    <!--</div>-->
     <div id="anotherBlue" class="dock dock-center">
-        <div class="col-md-3">Is that blue? Haha no it's white.</div>
-        <div class="col-md-3">Is that blue? Haha no it's white.</div>
-        <div class="col-md-3">Is that blue? Haha no it's white.</div>
-        <div class="col-md-3">Is that blue? Haha no it's white.</div>
-        <div class="col-md-3">Is that blue? Haha no it's white.</div>
+        <ui-view ng-animate=" 'animate' "/>
     </div>
 </div>

@@ -3,13 +3,16 @@
 
 /* testing less hat */
 .mustache-nav {
-  background-color: @nav-bg;
+  background-image: url('../images/Sky_over_Washington_Monument.JPG');
+  background-repeat: no-repeat;
   height: 100%;
   overflow: hidden;
-  font-size: @font-md-size;
+  font-size: 130%;
   font-weight: @font-weight;
   -webkit-font-smoothing: antialiased;
-  box-sizing: border-box;
+  -moz-osx-font-smoothing: auto;
+  font-smooth:antialiased;
+
   ul {
     margin-left:-30px;
     list-style-type:none;
@@ -19,6 +22,10 @@
   }
   li > ul > li {
     margin-left: -10px;
+
+  }
+  li > ul > li > a {
+    padding-left:25px;
   }
   a {
     display:block;
@@ -50,8 +57,21 @@
       margin-right: 10px;
     }
   }
+  .info-header {
+    color: #ffff00;
+    .brightness(0.9);
+    text-transform: uppercase;
+    font-size: @font-sm-size;
+    text-align: left;
+    padding: 5px 10px 0px 10px;
+    border-bottom: solid;
+    border-bottom-width: 1px;
+    border-bottom-color: #000;
+    /* .background-image(linear-gradient(to right, #333 98%,#888 97%)); */
+  }
 
   .sub-header > a.active {
+    .background-image(linear-gradient(to left, #000 99%,#00A000 98%));
     &:after {
       content:'\f107';
       font-family: 'FontAwesome';
@@ -64,7 +84,7 @@
   a:active,
   a:hover {
     color:@nav-ov-link;
-    background-color: #003300;
+    background-color: @nav-bg-over;
   }
 
   a.active {

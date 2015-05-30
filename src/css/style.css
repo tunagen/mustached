@@ -2,6 +2,13 @@ a {
   color: #00B7FF;
 }
 
+@font-face {
+  font-family: 'Open Sans Condensed';
+  src: url('../fonts/OpenSans-CondLight.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 /* Logo tunaGen */
 @font-face {
   font-family: 'FontTunaGen';

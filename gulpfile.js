@@ -31,8 +31,8 @@ gulp.task('api-concat-uglify', function () {
 });
 
 gulp.task('app-copy-images', function() {
-    gulp.src('bower_components/angular-tree-control/images/**/*')
-        .pipe(gulp.dest(distFolder+'/vendor/images'));
+    gulp.src('src/images/**/*')
+        .pipe(gulp.dest(distFolder+'/images'));
 });
 
 gulp.task('app-js-uglify', function () {
@@ -93,7 +93,7 @@ gulp.task('api-font-copy', function () {
 });
 
 gulp.task('app-copy-font', function() {
-    gulp.src('src/fonts/*.woff')
+    gulp.src('src/fonts/*/**')
         .pipe(gulp.dest(distFolder + '/fonts'));
 });
 
@@ -119,6 +119,7 @@ gulp.task('watch', function () {
     gulp.start('browser-sync');
     // Watch any files in src/, reload on change
     gulp.watch('src/**/*', [
+        'app-copy-images',
         'app-copy-font',
         'app-css-minify',
         'app-js-uglify',

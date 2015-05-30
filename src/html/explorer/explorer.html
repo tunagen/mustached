@@ -1,0 +1,19 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h1 class="panel-title">Explorer</h1>
+        <h2 class="panel-title">Select a file to edit: <strong>{{file.selected.parent}}/{{file.selected.name}}</strong></h2>
+    </div>
+    <div class="panel-body">
+    <div treecontrol  class="foldernav"
+         tree-model="dataForTheTree"
+         options="treeOptions"
+         on-selection="showSelected(node)"
+         on-node-toggle="nodeToggled(node)"
+         selected-node="node1">
+        {{node.name}}
+    </div>
+        <div class="panel-footer text-right">
+            <button class="btn btn-default">Select</button>
+        </div>
+    </div>
+</div>
