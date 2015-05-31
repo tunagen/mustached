@@ -1,6 +1,9 @@
 <div id="layout" class="mustache">
     <div class="dock dock-top">
         <div class="navbar-header">
+
+        </div>
+        <div class="col-md-4">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
                     data-target="#bs-nav-main-menu" aria-expanded="false" aria-controls="bs-nav-main-menu">
                 <span class="sr-only">Toggle navigation</span>
@@ -9,10 +12,14 @@
                 <span class="icon-bar"></span>
             </button>
             <!-- tunaGen Mustache -->
-            <a href="#" class="navbar-brand">
+            <a ui-sref="main" class="navbar-brand">
                 <i class="tg tg-logo"></i>
                 TG<sup>M</sup>
             </a>
+        </div>
+        <div class="col-md-3">
+            <label>Project:</label> <i>My project</i>
+            <label>File:</label> <i>none</i>
         </div>
     </div>
     <div id="floatLeft" class="dock dock-left">
